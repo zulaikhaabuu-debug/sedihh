@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MindSpace - Emosi Takut</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #eff6ff;
+  color: #304563;
+  text-align: center;
+  padding: 30px;
+}
+
+h1 {
+  color: #4778b8;
+}
+
+.card {
+  background: white;
+  border: 2px solid #d5e5fa;
+  border-radius: 20px;
+  padding: 25px;
+  width: 220px;
+  margin: 30px auto;
+  cursor: pointer;
+  box-shadow: 0 4px 12px #dce7f4;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background: #e5f0ff;
+}
+
+.emoji {
+  display: block;
+  font-size: 55px;
+  margin-bottom: 10px;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 45, 70, 0.6);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.overlay.show {
+  display: flex;
+  animation: fadeIn 0.3s;
+}
+
+.popup {
+  background: white;
+  max-width: 400px;
+  padding: 25px;
+  border-radius: 20px;
+  position: relative;
+  text-align: left;
+  animation: popUp 0.3s;
+}
+
+.popup h2 {
+  color: #4778b8;
+}
+
+.popup p {
+  line-height: 1.7;
+}
+
+.tip {
+  background: #edf5ff;
+  border-radius: 12px;
+  padding: 12px;
+  line-height: 1.6;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: none;
+  border-radius: 50%;
+  background: #e5efff;
+  font-size: 22px;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popUp {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<h1>🌈 MindSpace</h1>
+
+<p>Kenali emosi anda dan pelajari cara menguruskannya.</p>
+
+<div class="card" onclick="openPopup()">
+  <span class="emoji">😨</span>
+  <strong>Emosi Takut</strong>
+  <p>Klik untuk mengetahui lebih lanjut!</p>
+</div>
+
+<div class="overlay" id="overlay" onclick="closeOutside(event)">
+
+  <div class="popup">
+
+    <button class="close" onclick="closePopup()">×</button>
+
+    <h2>😨 Emosi Takut</h2>
+
+    <p>
+      Takut ialah perasaan yang muncul apabila kita berhadapan
+      dengan ancaman, bahaya atau sesuatu yang tidak diketahui.
+      Perasaan ini merupakan tindak balas semula jadi manusia.
+    </p>
+
+    <p><strong>Contoh situasi:</strong><br>
+      Berasa takut apabila perlu bercakap di hadapan kelas
+      atau menghadapi peperiksaan.
+    </p>
+
+    <div class="tip">
+      💡 <strong>Cara mengurus emosi takut:</strong>
+      <ul>
+        <li>Tarik nafas perlahan-lahan.</li>
+        <li>Kenal pasti perkara yang menyebabkan ketakutan.</li>
+        <li>Berikan kata-kata positif kepada diri sendiri.</li>
+        <li>Minta bantuan daripada orang yang dipercayai jika perlu.</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function openPopup() {
+  document.getElementById("overlay").classList.add("show");
+}
+
+function closePopup() {
+  document.getElementById("overlay").classList.remove("show");
+}
+
+function closeOutside(event) {
+  if (event.target.id === "overlay") {
+    closePopup();
+  }
+}
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") {
+    closePopup();
+  }
+});
+</script>
+
+</body>
+</html>
